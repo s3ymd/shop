@@ -1,0 +1,19 @@
+h1 会員情報
+
+table.ui.table
+  tr
+    td メールアドレス
+    td = current_user.email
+  tr
+    td 郵便番号
+    td = current_user.postal_code
+  tr
+    td ご住所
+    td = current_user.address
+  tr
+    td お名前
+    td = current_user.name
+  tr
+    td 電話番号
+    td = current_user.tel
+

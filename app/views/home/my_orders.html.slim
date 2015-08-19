@@ -1,0 +1,23 @@
+h1 ご注文履歴
+
+table.ui.table
+
+  - @orders.each do |o|
+    tr
+      td = o.created_at
+      td
+        = o.postal_code
+        br
+        = o.address
+        br
+        = o.name
+        br
+        = o.tel
+      td = o.payment_method
+      td
+        - o.order_details.each do |od|
+          = od.item.name
+          | ...
+          = od.quantity
+          | 点
+          br

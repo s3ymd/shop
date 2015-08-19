@@ -1,0 +1,54 @@
+doctype html
+html
+  head
+    title
+      | Shop
+    = stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true
+    = javascript_include_tag 'application', 'data-turbolinks-track' => true
+    = csrf_meta_tags
+  body
+    .ui.grid.container
+      .column
+
+        h1 Rails Shop
+
+        .ui.borderless.main.menu
+          = link_to 'トップ', :root, class: 'ui item'
+          = link_to 'カートの内容', :cart_index, class: 'ui item'
+          = link_to 'お問い合わせ', :inquiry, class: 'ui item'
+          .ui.search.item
+            .ui.icon.input
+              input#keyword-textbox[type='text' placeholder='商品を検索...']
+              i.search.link.icon#search-button
+
+          - if signed_in?
+            .ui.right.dropdown.item
+              = "ようこそ、#{current_user_name}さん"
+              i.dropdown.icon
+              .ui.menu
+                = link_to 'ご注文履歴', :my_orders, class: 'ui item'
+                = link_to '会員情報', :my_info, class: 'ui item'
+                = link_to 'ログアウト', :logout, method: :delete, class: 'ui item'
+          - else
+            .right.menu
+              = link_to 'ログイン', :login, class: 'ui item'
+              = link_to '会員登録', :create_account, class: 'ui item'
+
+
+        - if notice
+          .ui.info.message = notice
+        - if alert
+          .ui.error.message = alert
+
+        = yield
+
+coffee:
+  $ ->
+    exec_search = ->
+      keyword = $('#keyword-textbox').val()
+      Turbolinks.visit('search?keyword=' + keyword)
+
+    $('#search-button').click ->
+      exec_search()
+    $('#keyword-textbox').keypress (e) ->
+      exec_search() if e.which == 13

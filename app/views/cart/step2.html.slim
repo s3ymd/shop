@@ -1,0 +1,20 @@
+h1 お支払い方法をお選びください
+
+.ui.form
+  = form_for @order, url: :cart_step2 do |f|
+    .field
+      .ui.radio.checkbox
+        = f.radio_button :payment_method, 1
+        = f.label :payment_method, 'クレジットカード', value: 1
+    .field
+      .ui.radio.checkbox
+        = f.radio_button :payment_method, 2
+        = f.label :payment_method, 'コンビニ決済', value: 2
+    .field
+      .ui.radio.checkbox
+        = f.radio_button :payment_method, 3
+        = f.label :payment_method, '着払い', value: 3
+    .field
+      = f.submit '次へ'
+
+

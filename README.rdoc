@@ -1,0 +1,13 @@
+
+bin/rails g scaffold category name
+bin/rails g scaffold item name price:integer quantity:integer category:references
+bin/rails g scaffold user email password name birthday:date postal_code address:text tel
+bin/rails g scaffold order user:references payment_method:integer postal_code address:text name tel
+bin/rails g scaffold order_detail order:references item:references quantity:integer
+
+
+オーダーステップ
+step ログインしていない場合は、ログイン / 会員登録
+step お支払い方法の選択
+step 商品お届け先の入力
+step ご注文内容の最終確認

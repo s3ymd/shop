@@ -1,0 +1,14 @@
+h1 カートの内容
+
+- if (session[:cart] == nil) || session[:cart].empty?
+  p カートにはまだ何も入っていません。
+- else
+  table
+    - session[:cart].each do |item_id, quantity|
+      tr
+        td = Item.find(item_id).name
+        td = quantity
+
+= link_to 'お買い物を続ける', :root
+= link_to 'ご注文', :cart_step1 unless session[:cart].empty?
+

@@ -1,0 +1,15 @@
+p#notice = notice
+
+p
+  strong Order:
+  = @order_detail.order
+p
+  strong Item:
+  = @order_detail.item
+p
+  strong Quantity:
+  = @order_detail.quantity
+
+= link_to 'Edit', edit_order_detail_path(@order_detail)
+'|
+= link_to 'Back', order_details_path

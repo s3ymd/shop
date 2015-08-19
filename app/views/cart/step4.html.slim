@@ -1,0 +1,34 @@
+h1 ご注文内容の最終確認
+
+table.ui.table
+  thead
+    tr
+      th 商品名
+      th 数量
+  tbody
+    - session[:cart].each do |item_id, quantity|
+      tr
+        td.header = Item.find(item_id).name
+        td = quantity
+
+table.ui.table
+  tr
+    td.header お支払い方法
+    td = @order.payment_method
+  tr
+    td お届け先の郵便番号
+    td = @order.postal_code
+  tr
+    td お届け先のご住所
+    td = @order.address
+  tr
+    td お届け先のお名前
+    td = @order.name
+  tr
+    td お届け先電話番号
+    td = @order.tel
+
+= link_to 'ご注文の確定', :cart_step5, class: 'ui button'
+sass:
+  td.header
+    width: 250px

@@ -1,0 +1,19 @@
+.ui.centered.grid
+  .ui.raised.segment.left.aligned.login-form
+    .ui.form
+      h2.ui.dividing.header ログイン
+      = form_for :login do |f|
+        .field
+          = f.label 'メールアドレス'
+          = f.text_field :email
+        .field
+          = f.label 'パスワード'
+          = f.password_field :password
+        .field
+          = f.submit 'ログイン', class: 'ui submit button'
+
+sass:
+
+  .login-form
+    width: 500px
+    margin-top: 20px !important

@@ -1,0 +1,27 @@
+p#notice
+  = notice
+p
+  strong
+    | Name:
+  = @item.name
+p
+  strong
+    | Description:
+  = @item.description
+p
+  strong
+    | Price:
+  = @item.price
+p
+  strong
+    | Quantity:
+  = @item.quantity
+p
+  strong
+    | Category:
+  = @item.category
+= link_to 'Edit', edit_item_path(@item)
+|  | 
+= link_to 'Back', items_path
+br
+= link_to 'カートに入れる', cart_add_path(item_id: @item.id)
