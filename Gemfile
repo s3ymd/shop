@@ -46,5 +46,7 @@ end
 gem 'slim-rails'
 gem 'pry-rails'
 gem 'quiet_assets'
-gem 'rails-assets-semantic-ui'
+source 'https://rails-assets.org' do
+  gem 'rails-assets-semantic-ui'
+end
 gem 'jquery-turbolinks'
